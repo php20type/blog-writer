@@ -10,14 +10,14 @@ class CategoriesModel extends Model
 
     protected $fillable = ["name"];
 
-    // /**
-    //  * Belongs to one relationship
-    //  *
-    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    //  */
-    // public function posts()
-    // {
-    //     return $this->hasMany('App\Models\PostsModel','category_id');
-    // }
+    /**
+     * Belongs to one relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function posts()
+    {
+        return $this->hasMany('App\Models\PostsModel','category_id');
+    }
 
 }

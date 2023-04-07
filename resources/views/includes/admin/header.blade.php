@@ -50,12 +50,9 @@
                        <li>
                             <a href="#"><i class="fa fa-pencil fa-fw"></i> Posts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                {{-- <li>
+                                <li>
                                     <a href="{{route('posts.index')}}"><i class="fa fa-list fa-fw"></i>All Posts</a>
                                 </li>
-                                <li>
-                                    <a href="{{route('posts.create')}}"><i class="fa fa-plus fa-fw"></i>Add New</a>
-                                </li> --}}
                                 <li>
                                     <a href="{{route('posts-categories.index')}}"><i class="fa fa-circle-o fa-fw"></i>Categories</a>
                                 </li>
