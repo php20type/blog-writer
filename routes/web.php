@@ -27,4 +27,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin'],
     Route::get('/dashboard', 'Dashboard\AdminDashboardController@index')->name('admin.dashboard');
     Route::resource('posts', 'Posts\AdminPostsController');
     Route::resource('posts-categories','Posts\AdminPostsCategoriesController');
+    Route::resource('tags',"Tags\AdminTagsController");
+    Route::get('tags-suggest',"Tags\AdminTagsController@showTagsSuggestions");
 });    

@@ -59,6 +59,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="{{url('admin/tags')}}"><i class="fa fa-tags" aria-hidden="true"></i> Tags</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

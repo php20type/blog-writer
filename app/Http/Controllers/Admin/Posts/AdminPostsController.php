@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use App\Models\PostsModel;
+use App\Models\TagsModel;
 use App\Repositories\UserRepository;
 use App\Models\CategoriesModel;
 use App\Repositories\TagsRepository;
@@ -73,7 +74,7 @@ class AdminPostsController extends Controller
         $data = array();
         //Get key value pair data from categories table for populating in dropdown:
         $categories = CategoriesModel::pluck("name","id");
-        $data['post_tags'] = array();
+        $data['post_tags'] = TagsModel::pluck("name");
         $data['categories'] = $categories;
         return view("admin.posts.create",$data);
     }
@@ -124,15 +125,15 @@ class AdminPostsController extends Controller
         $data = array();
         $post = $this->postsRepository->findOrFail($id);
         $categories = $this->postsRepository->getAllCategory("name","id");
-        //Tags should be populated in edit form
+        // Tags should be populated in edit form
 
-        // $post_tags = $post->tags()->select("tags.id",'name')->get()->toArray();
-        // $tags =array();
-        // foreach ($post_tags as $tag)
-        // {
-        //     $tags[$tag['id']] = $tag['name'];
-        // }
-        // $data['post_tags'] = $tags;
+        $post_tags = $post->tags()->select("tags.id",'name')->get()->toArray();
+        $tags =array();
+        foreach ($post_tags as $tag)
+        {
+            $tags[$tag['id']] = $tag['name'];
+        }
+        $data['post_tags'] = $tags;
 
         $data['post'] = $post;
         $data['categories'] = $categories;

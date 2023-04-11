@@ -32,7 +32,7 @@
     @endif
 </div>
 
-{{-- <div class="form-group{{ $errors->has('tags[]') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('tags[]') ? ' has-error' : '' }}">
     {{Form::label('tags', 'Tags')}}
     {{Form::select("tags[]",$post_tags, null, array("class"=>"form-control","id"=>"tags","multiple"=>"multiple"))}}
     @if ($errors->has('tags[]'))
@@ -40,7 +40,7 @@
                 <strong>{{ $errors->first('tags[]') }}</strong>
         </span>
     @endif
-</div> --}}
+</div>
 
 <div class="form-group{{ $errors->has('featured_image') ? ' has-error ':''}}">
 {{Form::label('featured_image','Featured image * ')}}
@@ -113,27 +113,27 @@
 
             $("#category_id").select2();
 
-            // $("#tags").select2({
-            //     minimumInputLength: 2,
-            //     multiple: true,
-            //     quietMillis: 100,
-            //     ajax: {
-            //         url: '{{url('admin/tags-suggest')}}',
-            //         dataType: 'json',
-            //         data : function (params) {
-            //             var query = {
-            //                 search: params.term,
-            //             }
-            //             return query;
+            $("#tags").select2({
+                minimumInputLength: 2,
+                multiple: true,
+                quietMillis: 100,
+                ajax: {
+                    url: '{{url('admin/tags-suggest')}}',
+                    dataType: 'json',
+                    data : function (params) {
+                        var query = {
+                            search: params.term,
+                        }
+                        return query;
                         
-            //         },
-            //         processResults : function (data) {
-            //             return {
-            //                 results: data.results
-            //             };
-            //         }
-            //     }
-            // });
+                    },
+                    processResults : function (data) {
+                        return {
+                            results: data.results
+                        };
+                    }
+                }
+            });
         });
     </script>
 @endsection
